@@ -5,7 +5,7 @@ RED='\033[0;31m'
 IPVPS=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/myvpn1/VPN/main/izin"
+data_ip="https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $IPVPS | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
