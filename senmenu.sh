@@ -34,6 +34,7 @@ wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/AndyyudaVPN/xrayli
 wget -q -O /usr/bin/renel "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/renel.sh"
 wget -q -O /usr/bin/cekl "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/cekl.sh"
 wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/dell.sh"
+wget -q -O /usr/bin/addip "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/addip.sh"
 wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/backup/set-br.sh
 bash set-br.sh
 chmod +x /usr/bin/menu-backup
