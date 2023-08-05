@@ -78,22 +78,35 @@ exit 0
 fi
 
 clear
-echo "Add Domain for vmess/vless/trojan dll"
-echo " "
-read -rp "Input ur domain : " -e pp
-    if [ -z $pp ]; then
-        echo -e "
-        Nothing input for domain!
-        Then a random domain will be created"
-    else
-        echo "$pp" > /root/scdomain
-	echo "$pp" > /etc/xray/scdomain
-	echo "$pp" > /etc/xray/domain
-	echo "$pp" > /etc/v2ray/domain
-	echo $pp > /root/domain
-        echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
-    fi
-
+echo -e "$BBlue                     SETUP DOMAIN VPS     $NC"
+    echo -e "$BYellow----------------------------------------------------------$NC"
+    echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
+    echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
+    echo -e "$BYellow----------------------------------------------------------$NC"
+echo ""
+read -p "   Please select numbers 1-2 or Any Button(Random) : " host
+echo ""
+if [[ $host == "1" ]]; then
+read -rp "Input your domain : " -e pp
+read -rp "Input ur ns-domain : " -e nsdomen
+echo "$pp" > /root/domain
+echo "$pp" > /root/scdomain
+echo "$pp" > /etc/xray/domain
+echo "$pp" > /etc/v2ray/domain
+echo "$pp" > /etc/xray/scdomain
+echo "$nsdomen" > /etc/xray/nsdomain
+echo "$nsdomen" > /root/nsdomain
+echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
+echo ""
+elif [[ $host == "2" ]]; then
+#install cf
+wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
+clear
+else
+echo -e "Random Subdomain/Domain is used"
+wget https://raw.githubusercontent.comAndyyudaVPN/xraylite/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
 clear
 #install ssh ovpn
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
