@@ -43,5 +43,5 @@ case $opt in
 3) clear ; dell ;;
 4) clear ; cekl ;;
 0) clear ; menu ;;
-*) clear ; menul ;;
+*) clear ; menu ;;
 esac
