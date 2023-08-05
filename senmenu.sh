@@ -2,11 +2,6 @@
 # // config Data
 echo -e "${GREEN}Config Data${NC}"
 
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-ws.sh"
-wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-ssws.sh"
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-vless.sh"
-wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-tr.sh"
-wget -q -O /usr/bin/add-trgo "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-trgo.sh"
 wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/autoreboot.sh"
 wget -q -O /usr/bin/restarts "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/restarts.sh"
 wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/tendang.sh"
@@ -42,11 +37,6 @@ wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/AndyyudaVPN/xraylite
 wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/backup/set-br.sh
 bash set-br.sh
 chmod +x /usr/bin/menu-backup
-chmod +x /usr/bin/add-ws
-chmod +x /usr/bin/add-ssws
-chmod +x /usr/bin/add-vless
-chmod +x /usr/bin/add-tr
-chmod +x /usr/bin/addl
 chmod +x /usr/bin/cekl
 chmod +x /usr/bin/dell
 chmod +x /usr/bin/renel
