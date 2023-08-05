@@ -256,8 +256,8 @@ echo -e ""
 echo ""
 echo -e "
 "
-USRSC=$(curl -sS https://raw.githubusercontent.com/RJ-VPN/permission/main/ipp | grep $MYIP | awk '{print $2}')
-    EXPSC=$(curl -sS https://raw.githubusercontent.com/RJ-VPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+USRSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+    EXPSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     
     TEXT="
@@ -275,8 +275,8 @@ USRSC=$(curl -sS https://raw.githubusercontent.com/RJ-VPN/permission/main/ipp | 
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL "
 echo ""
 echo "" | tee -a log-install.txt
-rm /root/cf.sh >/dev/null 2>&1
-rm /root/setup.sh >/dev/null 2>&1
+rm /root/cf >/dev/null 2>&1
+rm /root/setupku.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
