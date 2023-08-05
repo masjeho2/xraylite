@@ -37,5 +37,5 @@ echo "$dns" > /root/scdomain
 echo "$dns" > /etc/xray/domain
 echo "$dns" > /etc/v2ray/domain
 echo "$dns" > /etc/xray/scdomain
-echo "IP=$dns" > /var/lib/ipvps.conf
+echo "IP=$dns" > /var/lib/scrz-prem/ipvps.conf
 cd
