@@ -1,5 +1,44 @@
 #!/bin/bash
 # =========================================
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+IPVPS=$(wget -qO- ipinfo.io/ip)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/myvpn1/VPN/main/izin"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $IPVPS | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $IPVPS \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/matamata223"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6282131861788"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
+}
+checking_sc
+clear
+
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+if [ "$res" = "Expired" ]; then
+Exp="\e[36mExpired\033[0m"
+else
+Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+fi
+
+# =========================================
 vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
 let vla=$vlx/2
 vmc=$(grep -c -E "^### " "/etc/xray/config.json")
@@ -58,6 +97,7 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
+
 # // Exporting URL Host
 export Server_URL="raw.githubusercontent.com/Zeastore/test/main"
 export Server1_URL="raw.githubusercontent.com/Zeastore/limit/main"
@@ -78,12 +118,30 @@ fi
 # // Exporting IP Address
 export IP=$( curl -s https://ipinfo.io/ip/ )
 
+clear
+
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+if [ "$res" = "Expired" ]; then
+Exp="\e[36mExpired\033[0m"
+else
+Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+fi
+
 # TOTAL RAM
 total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
 
 # // Exporting Network Interface
 export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
+
+data_ip="https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip"
+d2=$(date -d "$date_list" +"+%s")
+d1=$(date -d "$Exp" +"+%s")
+dayleft=$(( ($d1 - $d2) / 86400 ))
+
 
 # // Clear
 clear
@@ -168,46 +226,42 @@ ISPVPS=$( curl -s ipinfo.io/org )
 ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}' | head -1)"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}' | head -1)"
 clear
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[39;1;92m                   ⇱ SCRIPT PREMIUM BY ANDY YUDA⇲             \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "${BICyan} "                                                                      
-echo -e "${BICyan} ⇲  ${BICyan}Use Core        :  ${BIYellow}Xray-core"    
-echo -e "${BICyan} ⇲  ${BICyan}Current Domain  :  ${BIYellow}$(cat /etc/xray/domain)${NC}" 
-echo -e "${BICyan} ⇲  ${BICyan}NS Domain       :  $(cat /root/nsdomain)"
-echo -e "${BICyan} ⇲  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"                  
-echo -e "${BICyan} ⇲  ${BICyan}ISP-VPS         :  ${BIYellow}$ISPVPS${NC}"
-echo -e "${BICyan} ⇲  ${BICyan}TOTAL RAM       :  ${BIYellow}${totalram}MB"
+echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
+echo -e "                      << INFORMASI VPS >>                    \E[0m" | lolcat
+echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
+echo -e "  ${BLUE}• ${GREEN}Sever Uptime        ${NC}= $( uptime -p  | cut -d " " -f 2-10000 ) "
+echo -e "  ${BLUE}• ${GREEN}Current Time        ${NC}= $( date -d "0 days" +"%d-%m-%Y | %X" )"
+echo -e "  ${BLUE}• ${GREEN}Operating System    ${NC}= $( cat /etc/os-release | grep -w PRETTY_NAME | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g')( $(uname -m))"
+echo -e "  ${BLUE}• ${GREEN}Current Domain      ${NC}= $( cat /etc/xray/domain )"
+echo -e "  ${BLUE}• ${GREEN}Server IP           ${NC}= $IPVPS"
+echo -e "  ${BLUE}• ${GREEN}ISP-VPS             ${NC}= ${ISP}"
+echo -e "  ${BLUE}• ${GREEN}City                ${NC}= ${CITY}"
+echo -e "  ${BLUE}• ${GREEN}Clients Name        ${NC}= ${YELLOW}$Name ${NC}"
+echo -e "  ${BLUE}• ${GREEN}Script Exfire       ${NC}= ${YELLOW}$Exp (${NC}${RED} $dayleft Days ${NC}${YELLOW})${NC}"
+echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= RstoreVPN Tunneling ${NC}"
+echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
+echo -e "                     << STATUS SERVICE >>                    \E[0m" | lolcat
+echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
+echo -e "      ${COLOR2}[ SSH Websocket${NC}: ${GREEN}ON ${NC}]  [ NGINX${NC}: ${GREEN}$resngx ] [ XRAY${NC} : ${GREEN}$resv2r ] "
+echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│  \033[0m ${BOLD}${YELLOW}SSH     VMESS       VLESS      TROJAN       SHADOWSOCKS$NC  $COLOR1│"
+echo -e "$COLOR1│  \033[0m ${Blue} $ssh1        $vma           $vla          $tra               $ssa   $NC    $COLOR1│"
+echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
+echo -e "                     << MENU TUNNELING >>                    \E[0m" | lolcat
+echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
 
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[39;1;92m STATUS HARI INI  :  ⇱ Tetap Tersenyum ⇲             \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "${BICyan} "
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[39;1;92m                    ⇱ STATUS SERVICE ⇲                        \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
-echo -e "  ${GREEN}SSH      ${NC} : ${GREEN} ON ${NC}   "     
-echo -e "  ${GREEN}CRON     ${NC} : ${GREEN} ON ${NC}   "   
-echo -e "  ${GREEN}WEBSOCKET${NC} :  ${GREEN}ON${NC}    " 
-echo -e "  ${GREEN}DROPBEAR ${NC} :  ${GREEN}ON${NC}    " 
-echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
-
-echo -e "${GREEN}┌──────────────────────────────────────────────────┐${NC}"
-echo -e "${GREEN}│  \033[0m ${BOLD}${YELLOW}SSH     VMESS       VLESS      TROJAN       SHADOWSOCKS$NC  $COLOR1"
-echo -e "${GREEN}│  \033[0m ${Blue} $ssh1        $vma           $vla          $tra               $ssa   $NC"
-echo -e "${GREEN}└──────────────────────────────────────────────────┘${NC}"
-
-echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "\E[39;1;92m                    ⇱ STATUS PENGUNAAN ⇲                        \E[0m"
-echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "     ${BICyan} NGINX ${NC}: ${GREEN}$resngx         ${LIGHT} Today  : $ttoday"
-echo -e "     ${BICyan} XRAY  ${NC}: ${GREEN}$resv2r         ${LIGHT} Monthly: $tmon"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "             ${LIGHT} Today  : $ttoday"
+echo -e "             ${LIGHT} Monthly: $tmon"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[39;1;92m                     ⇱ MENU SERVICE ⇲                         \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
 echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${YELLOW}SSH ${GREEN}MENU        $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${YELLOW}GEN-SSL / CERTV $NC"
 echo -e " ${BICyan}[${BIWhite}02${BICyan}]${RED} •${NC} ${YELLOW}VMESS ${GREEN}MENU      $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${YELLOW}BANNER CHAGE $NC"
@@ -218,18 +272,19 @@ echo -e " ${BICyan}[${BIWhite}06${BICyan}]${RED} •${NC} ${YELLOW}MENU ${GREEN}
 echo -e " ${BICyan}[${BIWhite}07${BICyan}]${RED} •${NC} ${YELLOW}AUTO ${GREEN}REBOOT     $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${YELLOW}LIMMIT SPEED $NC"
 echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${YELLOW}REBOOT          $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${YELLOW}WEBMIN $NC"
 echo -e " ${BICyan}[${BIWhite}09${BICyan}]${RED} •${NC} ${YELLOW}RESTART ${GREEN}SERVICE $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${YELLOW}SCRIPT INFO $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${YELLOW}TRIAL           $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${YELLOW}BERSIHKAN SAMPAH $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${YELLOW}TRIAL           $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${YELLOW}CLEAR LOG $NC"
 echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${YELLOW}ADD ${GREEN}HOST        $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${YELLOW}FIX MISSING POINTING $NC"
 echo -e " ${BICyan}[${BIWhite} X ${BICyan}] TYPE X FOR EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
 echo -e " ${RED}"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 
 echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│ ${BOLD}${BLUE}Client    = $Name                           ${NC}"
-echo -e "${BICyan}│ ${BOLD}${BLUE}Expired   = $Exp                            ${NC}"
-echo -e "${BICyan}│ ${BOLD}${BLUE}Developer = Andy Yuda                       ${NC}"
-echo -e "${BICyan}│ ${BOLD}${RED}Version   = SUPER LTS                       ${NC}"
+echo -e "${BICyan}│ ${BOLD}${GREEN}Client    = $Name                           ${NC}"
+echo -e "${BICyan}│ ${BOLD}${RED}Expired   = $Exp                            ${NC}"
+echo -e "${BICyan}│ ${BOLD}${YELLOW}Developer = AndyYuda                   ${NC}"
+echo -e "${BICyan}│ ${BOLD}${PURPLE}Version   = SUPER LTS                       ${NC}"
 echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
+
 echo
 read -p " Select menu : " opt
 echo -e ""
