@@ -76,13 +76,15 @@ else
 echo "Akses di tolak!! Benget sia hurung!!";
 exit 0
 fi
-
+Use Domain Random / Gunakan Domain Random
 clear
 echo -e "$BBlue                     SETUP DOMAIN VPS     $NC"
     echo -e "$BYellow----------------------------------------------------------$NC"
-    echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
-    echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
+    echo -e "$BGreen 1. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
+    echo -e "$BGreen 2. Use Domain Random / Gunakan Domain Random $NC"
     echo -e "$BYellow----------------------------------------------------------$NC"
+echo ""
+read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
 if [[ $host == "1" ]]; then
 read -rp "Input your domain : " -e pp
