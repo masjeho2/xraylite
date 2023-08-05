@@ -1,6 +1,17 @@
 #!/bin/bash
 # // script credit by kang hory
 # // ini adalah script autoinstall ssh multiport untuk instalasi vpn server dan tunneling service
+### System Information
+TANGGAL=$(date '+%Y-%m-%d')
+TIMES="10"
+CHATID="5736569839"
+MYIP=$(wget -qO- ipinfo.io/ip)
+ISP=$(wget -qO- ipinfo.io/org)
+CITY=$(curl -s ipinfo.io/city)
+TIME=$(date +'%Y-%m-%d %H:%M:%S')
+KEY="6307367714:AAG_Gae1CEjB-BDTYLzHSb89kbmLxzln7mk"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+
 MYIP=$(curl -sS ipv4.icanhazip.com)
 red='\e[1;31m'
 green='\e[0;32m'
@@ -227,9 +238,32 @@ echo ""
 echo "===============-[ Script Credit By AndyYuda ]-==============="
 echo -e ""
 echo ""
+echo -e "
+"
+USRSC=$(curl -sS https://raw.githubusercontent.com/RJ-VPN/permission/main/ipp | grep $MYIP | awk '{print $2}')
+    EXPSC=$(curl -sS https://raw.githubusercontent.com/RJ-VPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+    TIMEZONE=$(printf '%(%H:%M:%S)T')
+    
+    TEXT="
+<code>────────────────────</code>
+<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
+<code>────────────────────</code>
+<code>ID  : </code><code>$USRSC</code>
+<code>Domain : </code><code>$domain</code>
+<code>Date   : </code><code>$TIME</code>
+<code>Time   : </code><code>$TIMEZONE</code>
+<code>Ip vps : </code><code>$MYIP</code>
+<code>location : </code><code>$CITY</code>
+<code>Exp Sc : </code><code>$EXPSC</code>
+<code>────────────────────</code>
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL "
+echo ""
 echo "" | tee -a log-install.txt
-echo "ADIOS"
-sleep 1
+rm /root/cf.sh >/dev/null 2>&1
+rm /root/setup.sh >/dev/null 2>&1
+secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
+echo -e "
+"
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
