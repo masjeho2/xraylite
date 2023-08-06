@@ -201,7 +201,16 @@ if [ -f "/root/log-install.txt" ]; then
 rm -fr /root/log-install.txt
 fi
 cd
-echo "3.0.0" > versi
+history -c
+serverV=$( curl -sS https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/version  )
+echo $serverV > /opt/.ver
+aureb=$(cat /home/re_otm)
+b=11
+if [ $aureb -gt $b ]
+then
+gg="PM"
+else
+gg="AM"
 clear
 rm -f ins-xray.sh
 rm -f senmenu.sh
