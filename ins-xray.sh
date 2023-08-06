@@ -57,20 +57,40 @@ timedatectl set-timezone Asia/Jakarta
 apt install curl pwgen openssl netcat cron -y
 
 # Make Folder & Log XRay & Log Trojan
-rm -fr /var/log/xray
-rm -fr /var/log/trojan
-rm -fr /home/vps/public_html
-mkdir -p /var/log/xray
-mkdir -p /var/log/trojan
-mkdir -p /home/vps/public_html
-chown www-data.www-data /var/log/xray
-chown www-data.www-data /etc/xray
-chmod +x /var/log/xray
-chmod +x /var/log/trojan
-touch /var/log/xray/access.log
-touch /var/log/xray/error.log
-touch /var/log/xray/access2.log
-touch /var/log/xray/error2.log
+#rm -fr /var/log/xray
+#rm -fr /var/log/trojan
+#rm -fr /home/vps/public_html
+#mkdir -p /var/log/xray
+#mkdir -p /var/log/trojan
+#mkdir -p /home/vps/public_html
+#chown www-data.www-data /var/log/xray
+#chown www-data.www-data /etc/xray
+#chmod +x /var/log/xray
+#chmod +x /var/log/trojan
+#touch /var/log/xray/access.log
+#touch /var/log/xray/error.log
+#touch /var/log/xray/access2.log
+#touch /var/log/xray/error2.log
+
+### Buat direktori xray
+function dir_xray() {
+    print_install "Membuat direktori xray"
+    mkdir -p /etc/{xray,vmess,websocket,vless,trojan,shadowsocks,bot}
+    # mkdir -p /usr/sbin/xray/
+    mkdir -p /root/.install.log
+    mkdir -p /var/log/xray/
+    mkdir -p /var/www/html/
+    mkdir -p /etc/myridwan/
+    # chmod +x /var/log/xray
+    touch /var/log/xray/{access.log,error.log}
+    chmod 777 /var/log/xray/*.log
+    touch /etc/vmess/.vmess.db
+    touch /etc/vless/.vless.db
+    touch /etc/trojan/.trojan.db
+    touch /etc/ssh/.ssh.db
+    touch /etc/shadowsocks/.shadowsock.db
+    clear
+}
 # Make Log Autokill & Log Autoreboot
 rm -fr /root/log-limit.txt
 rm -fr /root/log-reboot.txt
