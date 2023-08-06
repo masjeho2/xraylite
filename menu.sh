@@ -287,6 +287,8 @@ echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${YELLOW}ADD ${GREEN}H
 echo -e " ${BICyan}[${BIWhite} X ${BICyan}] TYPE X FOR EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
 echo -e " ${RED}"
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e " ${BICyan}[${BIWhite} 99 ${BICyan}] UPDATE SC ${BICyan}${BIYellow}${BICyan}${NC}"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 
 echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│ ${BOLD}${GREEN}Client    = $Name                           ${NC}"
@@ -321,7 +323,7 @@ case $opt in
 19) clear ; wbm ;;
 20) clear ; cat /root/log-install.txt ;;
 21) clear ; clearlog ;;
-#99) clear ; update ;;
+99) clear ; update ;;
 22) clear ; fix ;;
 #23) clear ; slow ;;
 
