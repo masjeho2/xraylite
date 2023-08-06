@@ -173,6 +173,7 @@ mkdir /root/akun/vmess.db
 mkdir /root/akun/vless.db
 mkdir /root/akun/shadowsocks.db
 mkdir /root/akun/trojan.db
+mkdir /root/akun/ssh.db
 
 #install remove log
 echo "0 5 * * * root reboot" >> /etc/crontab
@@ -291,7 +292,5 @@ echo -e "
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
-exit 0
-else
+exit 
 reboot
-fi
