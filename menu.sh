@@ -39,16 +39,23 @@ Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip 
 fi
 
 # =========================================
-vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
-let vla=$vlx/2
-vmc=$(grep -c -E "^### " "/etc/xray/config.json")
-let vma=$vmc/2
-ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
+#vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
+#let vla=$vlx/2
+#vmc=$(grep -c -E "^### " "/etc/xray/config.json")
+#let vma=$vmc/2
+#ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 
-trx=$(grep -c -E "^#! " "/etc/xray/config.json")
-let tra=$trx/2
-ssx=$(grep -c -E "^## " "/etc/xray/config.json")
-let ssa=$ssx/2
+#trx=$(grep -c -E "^#! " "/etc/xray/config.json")
+#let tra=$trx/2
+#ssx=$(grep -c -E "^## " "/etc/xray/config.json")
+#let ssa=$ssx/2
+vmess=$(cat /etc/vmess/.vmess.db | wc -l)
+vless=$(cat /etc/vless/.vless.db | wc -l)
+trojan=$(cat /etc/trojan/.trojan.db | wc -l)
+ss=$(cat /etc/shadowsocks/.shadowsocks.db | wc -l)
+ssh=$(cat etc/ssh/.ssh.db | wc -l)
+
+#total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 COLOR1='\033[0;35m'
 COLOR2='\033[0;39m'
 clear
@@ -246,7 +253,7 @@ echo -e "      ${COLOR2}[ SSH Websocket${NC}: ${GREEN}ON ${NC}]  [ NGINX${NC}: $
 echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│  \033[0m ${BOLD}${YELLOW}SSH     VMESS       VLESS      TROJAN       SHADOWSOCKS$NC  $COLOR1│"
-echo -e "$COLOR1│  \033[0m ${Blue} $ssh1        $vma           $vla          $tra               $ssa   $NC    $COLOR1│"
+echo -e "$COLOR1│  \033[0m ${Blue} $ssh        $vmess           $vless          $trojan               $ss   $NC    $COLOR1│"
 echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
 echo -e "                     << MENU TUNNELING >>                    \E[0m" | lolcat
