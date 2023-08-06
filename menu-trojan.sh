@@ -231,7 +231,7 @@ fi
 }
 
 function addtrojan(){
-source /var/lib/ssnvpn-pro/ipvps.conf
+source /var/lib/scrz-prem/ipvps.conf
 domain=$(cat /etc/xray/domain)
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}           • CREATE TROJAN USER •              ${NC} $COLOR1│$NC"
