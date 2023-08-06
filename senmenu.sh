@@ -70,6 +70,7 @@ chmod +x /usr/bin/wbm
 chmod +x /usr/bin/xp
 chmod +x /usr/bin/changer
 chmod +x /usr/bin/fix
+chmod +x /usr/bin/add-vless
 #chmod +x /usr/bin/update
 
 
