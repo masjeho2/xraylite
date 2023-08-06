@@ -169,7 +169,7 @@ wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ss
 
 #pemangkuvmessvless
 mkdir /root/akun
-mkdir /root/akun/vmess.db
+mkdir /root/akun/vmess.db,
 mkdir /root/akun/vless.db
 mkdir /root/akun/shadowsocks.db
 mkdir /root/akun/trojan.db
