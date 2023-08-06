@@ -4,7 +4,7 @@
 ### System Information
 TANGGAL=$(date '+%Y-%m-%d')
 TIMES="10"
-CHATID="5736569839"
+CHATID="-1001966360036"
 MYIP=$(wget -qO- ipinfo.io/ip)
 ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
