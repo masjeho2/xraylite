@@ -240,6 +240,8 @@ none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ /
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 
 read -rp "   Input Username : " -e user
+read -rp "   Input Quota : " -e quota
+read -rp "   Input limit ip : " -e limit
       
 if [ -z $user ]; then
 echo -e "$COLOR1│${NC} [Error] Username cannot be empty "
@@ -337,6 +339,8 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} Remarks       : ${user}"
 echo -e "$COLOR1 ${NC} Expired On    : $exp" 
+echo -e "$COLOR1 ${NC} Quota         : $quota" 
+echo -e "$COLOR1 ${NC} Limit ip      : $limit" 
 echo -e "$COLOR1 ${NC} Domain        : ${domain}" 
 echo -e "$COLOR1 ${NC} Port TLS      : ${tls}" 
 echo -e "$COLOR1 ${NC} Port none TLS : ${none}" 
