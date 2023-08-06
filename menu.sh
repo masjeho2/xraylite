@@ -53,7 +53,7 @@ vmess=$(cat /etc/vmess/.vmess.db | wc -l)
 vless=$(cat /etc/vless/.vless.db | wc -l)
 trojan=$(cat /etc/trojan/.trojan.db | wc -l)
 ss=$(cat /etc/shadowsocks/.shadowsocks.db | wc -l)
-ssh=$(cat etc/ssh/.ssh.db | wc -l)
+ssh=$(cat /etc/ssh/.ssh.db | wc -l)
 
 #total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 COLOR1='\033[0;35m'
