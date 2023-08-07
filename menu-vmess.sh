@@ -336,11 +336,11 @@ if [ ! -e /etc/vmess ]; then
   mkdir -p /etc/vmess
 fi
 
-if [ -z ${Quota} ]; then
+if [ -z ${quota} ]; then
   Quota="0"
 fi
 
-c=$(echo "${Quota}" | sed 's/[^0-9]*//g');
+c=$(echo "${quota}" | sed 's/[^0-9]*//g');
 d=$(( ${c} * 1024*1024*1024 ));
 
 if [[ ${c} != "0" ]]; then
@@ -350,7 +350,7 @@ DATADB=$(cat /etc/vmess/.vmess.db | grep "^###" | grep -w "${user}" | awk '{prin
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vmess/.vmess.db
 fi
-echo "### ${user} ${exp} ${uuid}" >>/etc/vmess/.vmess.db
+echo "### ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/vmess/.vmess.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • CREATE VMESS USER •              ${NC} $COLOR1│$NC"
