@@ -36,6 +36,8 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "${CYAN}"
 read -p "Username : " Login
 read -p "Password : " Pass
+read -p "Quota : " quota
+read -p "Limit IP : " limit
 read -p "Expired (Days): " masaaktif
 
 IP=$(wget -qO- ipinfo.io/ip);
@@ -68,6 +70,25 @@ expi="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
+if [ ! -e /etc/vmess ]; then
+  mkdir -p /etc/vmess
+fi
+
+if [ -z ${quota} ]; then
+  quota="0"
+fi
+
+c=$(echo "${quota}" | sed 's/[^0-9]*//g');
+d=$(( ${c} * 1024*1024*1024 ));
+
+if [[ ${c} != "0" ]]; then
+echo "${d}" > /etc/ssh/${user}
+fi
+DATADB=$(cat /etc/ssh/.ssh.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/ssh/.ssh.db
+fi
+echo "### ${user} ${exp} ${quota} ${limit}" >>/etc/ssh/.ssh.db
 clear
 echo -e ""
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
@@ -76,6 +97,8 @@ echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━�
 echo -e "${LIGHT}Username: $Login"
 echo -e "Password: $Pass"
 echo -e "Created: $hariini"
+echo -e "Quota  : $quota"
+echo -e "Limit IP  : $limit"
 echo -e "Expired: $expi"
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
 echo -e "IP/Host: $IP"
