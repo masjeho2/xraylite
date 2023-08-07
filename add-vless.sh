@@ -142,7 +142,7 @@ clear
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\E[0;41;36m    Xray/Vless Account     \E[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
-echo -e "Remarks     : ${user}" | tee -a /root/akun/vless.db/$user.txt
+echo -e "Remarks     : ${user}" | tee -a /root/akun/vless/$user.txt
 echo -e "Domain      : ${domain}" | tee -a /root/akun/vless/$user.txt
 echo -e "Quota       : ${quota} GB" 
 echo -e "Limit iP    : ${limit} User" 
