@@ -1,5 +1,23 @@
 #!/bin/bash
 # =========================================
+vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
+let vla=$vlx/2
+vmc=$(grep -c -E "^### " "/etc/xray/config.json")
+let vma=$vmc/2
+ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
+
+trx=$(grep -c -E "^#! " "/etc/xray/config.json")
+let tra=$trx/2
+ssx=$(grep -c -E "^## " "/etc/xray/config.json")
+let ssa=$ssx/2
+COLOR1='\033[0;35m'
+COLOR2='\033[0;39m'
+clear
+#total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
+COLOR1='\033[0;35m'
+COLOR2='\033[0;39m'
+clear
+
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 IPVPS=$(wget -qO- ipinfo.io/ip)
