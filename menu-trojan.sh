@@ -214,11 +214,11 @@ if [ ! -e /etc/trojan ]; then
   mkdir -p /etc/trojan
 fi
 
-if [ -z ${Quota} ]; then
+if [ -z ${quota} ]; then
   Quota="0"
 fi
 
-c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+c=$(echo "${quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 
 if [[ ${c} != "0" ]]; then
@@ -228,7 +228,7 @@ DATADB=$(cat /etc/trojan/.trojan.db | grep "^#tr#" | grep -w "${user}" | awk '{p
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
 fi
-echo "#tr# ${user} ${exp} ${uuid} ${Quota} ${limit}" >>/etc/trojan/.trojan.db
+echo "#tr# ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/trojan/.trojan.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • RENEW TROJAN USER •              ${NC} $COLOR1│$NC"
