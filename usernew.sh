@@ -88,7 +88,7 @@ DATADB=$(cat /etc/ssh/.ssh.db | grep "^###" | grep -w "${user}" | awk '{print $2
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/ssh/.ssh.db
 fi
-echo "### ${user} ${exp} ${quota} ${limit}" >>/etc/ssh/.ssh.db
+echo "### ${Login} ${masaaktif} ${Pass} ${quota} ${limit}" >>/etc/ssh/.ssh.db
 clear
 echo -e ""
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
