@@ -347,5 +347,5 @@ case $opt in
 
 0) clear ; menu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; ./menu ;;
+*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; menu ;;
 esac
