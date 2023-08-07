@@ -168,6 +168,9 @@ wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ss
 #echo "30 * * * * root removelog" >> /etc/crontab
 
 #pemangkuvmessvless
+    function dir_xray() {
+    print_install "Membuat direktori xray"
+    mkdir -p /etc/{xray,vmess,websocket,vless,trojan,shadowsocks,bot}
     # mkdir -p /usr/sbin/xray/
     mkdir -p /root/.install.log
     mkdir -p /var/log/xray/
@@ -181,7 +184,8 @@ wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ss
     touch /etc/trojan/.trojan.db
     touch /etc/ssh/.ssh.db
     touch /etc/shadowsocks/.shadowsocks.db
-
+    clear
+}
 #install remove log
 echo "0 5 * * * root reboot" >> /etc/crontab
 echo "* * * * * root clog" >> /etc/crontab
