@@ -168,12 +168,13 @@ wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ss
 #echo "30 * * * * root removelog" >> /etc/crontab
 
 #pemangkuvmessvless
-#mkdir /root/akun
-#mkdir /root/akun/vmess/.vmess.db
-#mkdir /root/akun/vless/.vless.db
-#mkdir /root/akun/shadowsocks/.shadowsocks.db
-#mkdir /root/akun/trojan/.trojan.db
-#mkdir /root/akun/ssh/.ssh.db
+mkdir /root/akun
+mkdir /root/akun/vmess
+mkdir /root/akun/vless
+mkdir /root/akun/shadowsocks
+mkdir /root/akun/trojan
+mkdir /root/akun/ssh
+
 
     
 #install remove log
