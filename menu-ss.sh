@@ -338,11 +338,11 @@ if [ ! -e /etc/shadowsocks ]; then
   mkdir -p /etc/shadowsocks
 fi
 
-if [ -z ${Quota} ]; then
+if [ -z ${quota} ]; then
   Quota="0"
 fi
 
-c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+c=$(echo "${quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 
 if [[ ${c} != "0" ]]; then
@@ -352,7 +352,7 @@ DATADB=$(cat /etc/shadowsocks/.shadowsocks.db | grep "^##@" | grep -w "${user}" 
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/shadowsocks/.shadowsocks.db
 fi
-echo "##@ ${user} ${exp} ${uuid}" >>/etc/shadowsocks/.shadowsocks.db
+echo "##@ ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/shadowsocks/.shadowsocks.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • CREATE SSWS USER •              ${NC} $COLOR1│$NC"
@@ -362,7 +362,7 @@ echo -e "$COLOR1 ${NC} Remarks     : ${user}"
 echo -e "$COLOR1 ${NC} Expired On  : $exp"  
 echo -e "$COLOR1 ${NC} Domain      : ${domain}"  
 echo -e "$COLOR1 ${NC} Quota       : ${quota} GB"  
-echo -e "$COLOR1 ${NC} Limit IP      : ${limit} USER "  
+echo -e "$COLOR1 ${NC} Limit IP    : ${limit} USER "  
 echo -e "$COLOR1 ${NC} Port TLS    : ${tls}"  
 echo -e "$COLOR1 ${NC} Port  GRPC  : ${tls}" 
 echo -e "$COLOR1 ${NC} Password    : ${uuid}"  
