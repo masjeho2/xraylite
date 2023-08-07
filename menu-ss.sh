@@ -69,6 +69,8 @@ echo -e "$COLOR1┌────────────────────�
 tls="$(cat ~/log-install.txt | grep -w "Sodosok WS/GRPC" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 read -rp "   Input Username : " -e user
+read -rp "   Input Quota : " -e quota
+read -rp "   Input Limit IP : " -e limit
 if [ -z $user ]; then
 echo -e "$COLOR1│${NC} [Error] Username cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -332,6 +334,25 @@ cat > /home/vps/public_html/ss-ws/ss-$user.txt <<-END
 END
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
+if [ ! -e /etc/shadowsocks ]; then
+  mkdir -p /etc/shadowsocks
+fi
+
+if [ -z ${Quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+d=$((${c} * 1024 * 1024 * 1024))
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/shadowsocks/${user}
+fi
+DATADB=$(cat /etc/shadowsocks/.shadowsocks.db | grep "^##@" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/shadowsocks/.shadowsocks.db
+fi
+echo "##@ ${user} ${exp} ${uuid}" >>/etc/shadowsocks/.shadowsocks.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • CREATE SSWS USER •              ${NC} $COLOR1│$NC"
@@ -340,6 +361,8 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1 ${NC} Remarks     : ${user}" 
 echo -e "$COLOR1 ${NC} Expired On  : $exp"  
 echo -e "$COLOR1 ${NC} Domain      : ${domain}"  
+echo -e "$COLOR1 ${NC} Quota       : ${quota} GB"  
+echo -e "$COLOR1 ${NC} Limit IP      : ${limit} USER "  
 echo -e "$COLOR1 ${NC} Port TLS    : ${tls}"  
 echo -e "$COLOR1 ${NC} Port  GRPC  : ${tls}" 
 echo -e "$COLOR1 ${NC} Password    : ${uuid}"  
@@ -437,7 +460,7 @@ function delssws(){
 NUMBER_OF_CLIENTS=$(grep -c -E "^## " "/etc/xray/config.json")
 if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE TROJAN USER •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE SHADOWSOCKS USER •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}  • You Dont have any existing clients!"
@@ -451,7 +474,7 @@ menu-ss
 fi
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE TROJAN USER •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE SHADOWSOCKS USER •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 grep -E "^## " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq | nl
@@ -469,7 +492,7 @@ systemctl restart xray > /dev/null 2>&1
 rm /home/vps/public_html/ss-ws/ss-$user.txt
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE TROJAN USER •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}           • DELETE SHADOWSOCKS USER •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}   • Accound Delete Successfully"
