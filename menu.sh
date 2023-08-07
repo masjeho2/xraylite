@@ -49,11 +49,11 @@ fi
 #let tra=$trx/2
 #ssx=$(grep -c -E "^## " "/etc/xray/config.json")
 #let ssa=$ssx/2
-vmess=$(cat /etc/vmess/.vmess.db | wc -l)
-vless=$(cat /etc/vless/.vless.db | wc -l)
-trojan=$(cat /etc/trojan/.trojan.db | wc -l)
-ss=$(cat /etc/shadowsocks/.shadowsocks.db | wc -l)
-ssh=$(cat /etc/ssh/.ssh.db | wc -l)
+vmess=$(cat /root/akun/vmess/.vmess.db | wc -l)
+vless=$(cat /root/akun/vless/.vless.db | wc -l)
+trojan=$(cat /root/akun/trojan/.trojan.db | wc -l)
+ss=$(cat /root/akun/shadowsocks/.shadowsocks.db | wc -l)
+ssh=$(cat /root/akun/ssh/ssh.db | wc -l)
 
 #total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 COLOR1='\033[0;35m'
