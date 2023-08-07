@@ -240,6 +240,8 @@ echo -e "$COLOR1┌────────────────────�
 tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 read -rp "   Input Username : " -e user
+read -rp "   Input Quota : " -e quota
+read -rp "   Input Limit IP : " -e limit
 if [ -z $user ]; then
 echo -e "$COLOR1│${NC}   [Error] Username cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -284,6 +286,8 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1 ${NC} Remarks     : ${user}" 
 echo -e "$COLOR1 ${NC} Expired On  : $exp" 
 echo -e "$COLOR1 ${NC} Host/IP     : ${domain}" 
+echo -e "$COLOR1 ${NC} Limit Quota : ${quota}" 
+echo -e "$COLOR1 ${NC} Limit iP    : ${limit}" 
 echo -e "$COLOR1 ${NC} Port        : ${tr}" 
 echo -e "$COLOR1 ${NC} Key         : ${uuid}" 
 echo -e "$COLOR1 ${NC} Path        : /trojan-ws"
