@@ -70,8 +70,8 @@ expi="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
-if [ ! -e /etc/vmess ]; then
-  mkdir -p /etc/vmess
+if [ ! -e /etc/ssh ]; then
+  mkdir -p /etc/ssh
 fi
 
 if [ -z ${quota} ]; then
