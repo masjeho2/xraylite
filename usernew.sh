@@ -82,11 +82,11 @@ c=$(echo "${quota}" | sed 's/[^0-9]*//g');
 d=$(( ${c} * 1024*1024*1024 ));
 
 if [[ ${c} != "0" ]]; then
-echo "${d}" > /etc/ssh/${user}
+echo "${d}" > /etc/ssh/${Login}
 fi
 DATADB=$(cat /etc/ssh/.ssh.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
 if [[ "${DATADB}" != '' ]]; then
-  sed -i "/\b${user}\b/d" /etc/ssh/.ssh.db
+  sed -i "/\b${Login}\b/d" /etc/ssh/.ssh.db
 fi
 echo "### ${Login} ${masaaktif} ${Pass} ${quota} ${limit}" >>/etc/ssh/.ssh.db
 clear
