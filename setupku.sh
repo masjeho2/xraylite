@@ -262,21 +262,14 @@ echo "------------------------------------------------------------"
 echo ""
 echo "===============-[ Script Credit By AndyYuda ]-==============="
 echo -e ""
-
-    
 echo ""
 echo "" | tee -a log-install.txt
-rm /root/cf >/dev/null 2>&1
-rm /root/setupku.sh >/dev/null 2>&1
-secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
-echo -e "
-"
+echo "ADIOS"
+sleep 1
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
-    else
-        reboot
-    fi
-exit 
+else
 reboot
+fi
