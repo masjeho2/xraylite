@@ -168,12 +168,19 @@ wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ss
 #echo "30 * * * * root removelog" >> /etc/crontab
 
 #pemangkuvmessvless
-mkdir /root/akun
-mkdir /root/akun/vmess
-mkdir /root/akun/vless
-mkdir /root/akun/shadowsocks
-mkdir /root/akun/trojan
-mkdir /root/akun/ssh
+    # mkdir -p /usr/sbin/xray/
+    mkdir -p /root/.install.log
+    mkdir -p /var/log/xray/
+    mkdir -p /var/www/html/
+    mkdir -p /etc/myridwan/
+    # chmod +x /var/log/xray
+    touch /var/log/xray/{access.log,error.log}
+    chmod 777 /var/log/xray/*.log
+    touch /etc/vmess/.vmess.db
+    touch /etc/vless/.vless.db
+    touch /etc/trojan/.trojan.db
+    touch /etc/ssh/.ssh.db
+    touch /etc/shadowsocks/.shadowsocks.db
 
 #install remove log
 echo "0 5 * * * root reboot" >> /etc/crontab
