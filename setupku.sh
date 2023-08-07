@@ -217,6 +217,28 @@ rm -f senmenu.sh
 rm -f setupku.sh
 rm -f xraymode.sh
 rm -f slowdns.sh
+function finish(){
+    USRSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+    EXPSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+    TIMEZONE=$(printf '%(%H:%M:%S)T')
+    TEXT="
+<code>────────────────────</code>
+<b>⚡AUTOSCRIPT PREMIUM⚡</b>
+<code>────────────────────</code>
+<code>Owner    :</code><code>$USRSC</code>
+<code>Domain   :</code><code>$domain</code>
+<code>Username :</code><code>root</code>
+<code>Password :</code><code>. </code>
+<code>DATE     :</code><code>$TIME</code>
+<code>Time     :</code><code>$TIMEZONE</code>
+<code>Exp Sc.  :</code><code>$EXPSC</code>
+<code>────────────────────</code>
+<b> Project VPN Tunneling </b>
+<code>────────────────────</code>
+<i>Automatic Notifications From Github</i>
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://wa.me/6283821682527"}]]}' 
+#"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ2","url":"https://wa.me/+6282131861788"}]]}'
+    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 
 echo "===============-[ ANDYYUDA VPN PREMIUM ]-================"
 echo ""
@@ -262,26 +284,8 @@ echo "------------------------------------------------------------"
 echo ""
 echo "===============-[ Script Credit By AndyYuda ]-==============="
 echo -e ""
-echo ""
-echo -e "
-"
-USRSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
-    EXPSC=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
-    TIMEZONE=$(printf '%(%H:%M:%S)T')
+
     
-    TEXT="
-<code>────────────────────</code>
-<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
-<code>────────────────────</code>
-<code>ID  : </code><code>$USRSC</code>
-<code>Domain : </code><code>$domain</code>
-<code>Date   : </code><code>$TIME</code>
-<code>Time   : </code><code>$TIMEZONE</code>
-<code>Ip vps : </code><code>$MYIP</code>
-<code>location : </code><code>$CITY</code>
-<code>Exp Sc : </code><code>$EXPSC</code>
-<code>────────────────────</code>
-curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL "
 echo ""
 echo "" | tee -a log-install.txt
 rm /root/cf >/dev/null 2>&1
@@ -292,5 +296,6 @@ echo -e "
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
+}
 exit 
 reboot
