@@ -136,11 +136,11 @@ if [ ! -e /etc/vless ]; then
   mkdir -p /etc/vless
 fi
 
-if [ -z ${Quota} ]; then
+if [ -z ${quota} ]; then
   Quota="0"
 fi
 
-c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+c=$(echo "${quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 
 if [[ ${c} != "0" ]]; then
@@ -150,7 +150,7 @@ DATADB=$(cat /etc/vless/.vless.db | grep "^#&" | grep -w "${user}" | awk '{print
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vless/.vless.db
 fi
-echo "#& ${user} ${exp} ${uuid}" >>/etc/vless/.vless.db
+echo "#& ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/vless/.vless.db
 clear
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\E[0;41;36m    Xray/Vless Account     \E[0m" | tee -a /root/akun/vless/$user.txt
