@@ -33,6 +33,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
   echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
   read -rp "User: " -e user
+  read -rp "Quota: " -e quota
+  read -rp "Limit IP: " -e limit
   CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
   if [[ ${CLIENT_EXISTS} == '1' ]]; then
@@ -140,8 +142,10 @@ clear
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\E[0;41;36m    Xray/Vless Account     \E[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
-echo -e "Remarks     : ${user}" | tee -a /root/akun/vless/$user.txt
+echo -e "Remarks     : ${user}" | tee -a /root/akun/vless.db/$user.txt
 echo -e "Domain      : ${domain}" | tee -a /root/akun/vless/$user.txt
+echo -e "Quota       : ${quota} GB" 
+echo -e "Limit iP    : ${limit} User" 
 echo -e "port TLS    : 443" | tee -a /root/akun/vless/$user.txt
 echo -e "Port DNS    : 443" | tee -a /root/akun/vless/$user.txt
 echo -e "Port NTLS   : 80" | tee -a /root/akun/vless/$user.txt
