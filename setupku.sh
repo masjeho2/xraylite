@@ -296,6 +296,10 @@ echo -e "
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
+exit 0
+    else
+        reboot
+    fi
 }
 exit 
 reboot
