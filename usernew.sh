@@ -25,7 +25,7 @@ export ungu='\033[0;35m'
 
 # Getting
 
-domain=$(cat /etc/xray/domain)
+domen=`cat /etc/xray/domain`
 sldomain=`cat /etc/xray/dns`
 cdndomain=$(cat /root/awscdndomain)
 slkey=$(cat /etc/slowdns/server.pub)
