@@ -1,5 +1,5 @@
 #!/bin/bash
-# // script credit by kang hory
+# // script credit by AndyYuda
 # // ini adalah script autoinstall ssh multiport untuk instalasi vpn server dan tunneling service
 ### System Information
 TANGGAL=$(date '+%Y-%m-%d')
