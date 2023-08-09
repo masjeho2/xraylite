@@ -3,13 +3,10 @@
 # // ini adalah script autoinstall ssh multiport untuk instalasi vpn server dan tunneling service
 ### System Information
 TANGGAL=$(date '+%Y-%m-%d')
-TIMES="10"
-CHATID="-1001966360036"
 MYIP=$(wget -qO- ipinfo.io/ip)
 ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
-KEY="6307367714:AAG_Gae1CEjB-BDTYLzHSb89kbmLxzln7mk"
 # domain random
 CDN="https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/ssh"
 
@@ -110,10 +107,11 @@ clear
 	echo -e "${BGreen}Done!${NC}"
     sleep 2
 clear
-
-
+CHATID="-1001966360036"
+KEY="6307367714:AAG_Gae1CEjB-BDTYLzHSb89kbmLxzln7mk"
+WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
-TEXT="Installasi script Project VPN TUNNELING 
+TEXT="Project VPN TUNNELING 
 ============================
 <code>Domain     :</code> <code>$domain</code>
 <code>IP Vps     :</code> <code>$IPVPS</code>
@@ -122,10 +120,12 @@ TEXT="Installasi script Project VPN TUNNELING
 <code>User Script:</code> <code>$Name</code>
 <code>Exp Script :</code> <code>$Exp</code>
 <code>Location   :</code> <code>$CITY</code>
-<code>Timezone   :</code> <code>$WKT</code>
+<code>Timezone   :</code> <code>$TIME</code>
 ============================
 "
-curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+
+
 #install ssh ovpn
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install SSH / WS               $NC"
