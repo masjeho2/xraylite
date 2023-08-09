@@ -46,9 +46,9 @@ checking_sc() {
 checking_sc
 clear
 
-ISP=$(cat /etc/xray/isp)
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
 NS=$(cat /etc/xray/dns)
-CITY=$(cat /etc/xray/city)
+CITY=$(curl -s ipinfo.io/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
 Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
@@ -147,9 +147,9 @@ export IP=$( curl -s https://ipinfo.io/ip/ )
 
 clear
 
-ISP=$(cat /etc/xray/isp)
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
 NS=$(cat /etc/xray/dns)
-CITY=$(cat /etc/xray/city)
+CITY=$(curl -s ipinfo.io/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
 Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
