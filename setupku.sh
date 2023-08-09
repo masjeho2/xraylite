@@ -113,7 +113,8 @@ WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="Project VPN TUNNELING 
 ============================
-<code>Domain     :</code> <code>$domain</code>
+<code>Domain     :</code> <code>$dom</code>
+<code>NS Domain  :</code> <code>$nsdomen</code>
 <code>IP Vps     :</code> <code>$MYIP</code>
 <code>User Login :</code> <code>root</code>
 <code>Pass Login :</code> <code>bok</code>
