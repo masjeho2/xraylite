@@ -46,9 +46,11 @@ checking_sc() {
 checking_sc
 clear
 
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
-CITY=$(curl -s ipinfo.io/city )
-MYIP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+NS=$(cat /etc/xray/dns)
+CITY=$(cat /etc/xray/city)
+IPVPS=$(curl -s ipv4.icanhazip.com)
+domain=$(cat /etc/xray/domain)
 Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
@@ -145,9 +147,11 @@ export IP=$( curl -s https://ipinfo.io/ip/ )
 
 clear
 
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
-CITY=$(curl -s ipinfo.io/city )
-MYIP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+NS=$(cat /etc/xray/dns)
+CITY=$(cat /etc/xray/city)
+IPVPS=$(curl -s ipv4.icanhazip.com)
+domain=$(cat /etc/xray/domain)
 Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
