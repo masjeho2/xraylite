@@ -353,7 +353,7 @@ case $opt in
 22) clear ; fix ;;
 23) clear ; clear ; wget --load-cookies /tmp/cookies.txt ${UDPX} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
 24) clear ; passwd ;;
-25) clear ; fix ;;
+25) clear ; xolpanel ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; menu ;;
