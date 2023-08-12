@@ -36,7 +36,7 @@ wget -q -O /usr/bin/cekl "https://raw.githubusercontent.com/AndyyudaVPN/xraylite
 wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/dell.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/add-vless.sh"
 wget -q -O /usr/bin/addip "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/addip.sh"
-wget -q -O /usr/bin/xolpanel "https://raw.githubusercontent.com/Andyyuda/xolpanel/main/xolpanel.sh"
+wget -q -O /usr/bin/xolpanel "https://raw.githubusercontent.com/Andyyuda/xolpanel/main/cupu.sh"
 wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/backup/set-br.sh
 bash set-br.sh
 chmod +x /usr/bin/menu-backup
