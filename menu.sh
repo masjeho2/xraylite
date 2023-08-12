@@ -159,9 +159,24 @@ else
 Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
 fi
 
+###########- END COLOR CODE -##########
+tram=$( free -h | awk 'NR==2 {print $2}' )
+uram=$( free -h | awk 'NR==2 {print $3}' )
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+# Getting CPU Information
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
 # TOTAL RAM
 total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
+
+persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
+#persencpu=
+persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
+
+
 
 # // Exporting Network Interface
 export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
@@ -269,6 +284,8 @@ echo -e "  ${BLUE}• ${GREEN}SLOWDNS Domain      ${NC}= $NS"
 echo -e "  ${BLUE}• ${GREEN}Server IP           ${NC}= $IPVPS"
 echo -e "  ${BLUE}• ${GREEN}ISP-VPS             ${NC}= $ISP"
 echo -e "  ${BLUE}• ${GREEN}City                ${NC}= $CITY"
+echo -e "  ${BLUE}• ${GREEN}RAM                 ${NC}= $uram / $tram"
+echo -e "  ${BLUE}• ${GREEN}CPU                 ${NC}= $cpu_usage"
 echo -e "  ${BLUE}• ${GREEN}Clients Name        ${NC}= ${YELLOW}$Name ${NC}"
 echo -e "  ${BLUE}• ${GREEN}Script Exfire       ${NC}= ${YELLOW}$Exp (${NC}${RED} $dayleft Days ${NC}${YELLOW})${NC}"
 echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= RstoreVPN Tunneling ${NC}"
