@@ -1,4 +1,12 @@
 #!/bin/bash
+ # > Buat swap sebesar 1G
+    dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+    mkswap /swapfile
+    chown root:root /swapfile
+    chmod 0600 /swapfile >/dev/null 2>&1
+    swapon /swapfile >/dev/null 2>&1
+    sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
+    
 # // script credit by AndyYuda
 # // ini adalah script autoinstall ssh multiport untuk instalasi vpn server dan tunneling service
 ### System Information
