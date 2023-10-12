@@ -19,11 +19,11 @@ function vmip(){
 #LIMITVMESSIP
 echo -n > /var/log/xray/access.log
 sleep 600
-data=( `ls /etc/funny/limit/vmess/ip`);
+data=( `ls /etc/vmess/ip`);
 #Decrypted By YADDY D PHREAKER
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/funny/limit/vmess/ip/$user)
+        iplimit=$(cat /etc/vmess/${user}ip/)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
         cekcek=$(echo -e "$ehh" | wc -l);
         if [[ $cekcek -gt $iplimit ]]; then
@@ -42,15 +42,16 @@ data=( `ls /etc/funny/limit/vmess/ip`);
         sleep 0.1
     done
 }
+vmip
 function vlip(){
 #LIMITVLESSIP
 echo -n > /var/log/xray/access.log
 sleep 600
-data=( `ls /etc/funny/limit/vless/ip`);
+data=( `ls /etc/vless/ip`);
 #Decrypted By YADDY D PHREAKER
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/funny/limit/vless/ip/$user)
+        iplimit=$(cat /etc/vless/${user}ip/)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
         cekcek=$(echo -e "$ehh" | wc -l);
         if [[ $cekcek -gt $iplimit ]]; then
@@ -69,15 +70,16 @@ data=( `ls /etc/funny/limit/vless/ip`);
         sleep 0.1
     done
 }
+vlip
 function trip(){
 #LIMITIPTROJAN
 echo -n > /var/log/xray/access.log
 sleep 600
-data=( `ls /etc/funny/limit/trojan/ip`);
+data=( `ls /etc/trojan/ip`);
 #Decrypted By YADDY D PHREAKER
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/funny/limit/trojan/ip/$user)
+        iplimit=$(cat /etc/trojan/${user}ip/)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
         cekcek=$(echo -e "$ehh" | wc -l);
         if [[ $cekcek -gt $iplimit ]]; then
@@ -96,6 +98,7 @@ data=( `ls /etc/funny/limit/trojan/ip`);
         sleep 0.1
     done
 }
+vlip
 function ssip(){
 #LIMITIPTROJAN
 echo -n > /var/log/xray/access.log
@@ -123,13 +126,4 @@ data=( `ls /etc/funny/limit/shadowsocks/ip`);
         sleep 0.1
     done
 }
-
-if [[ ${1} == "vmip" ]]; then
-vmip
-elif [[ ${1} == "vlip" ]]; then
-vlip
-elif [[ ${1} == "trip" ]]; then
-trip
-elif [[ ${1} == "ssip" ]]; then
 ssip
-fi
