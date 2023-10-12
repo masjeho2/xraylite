@@ -90,6 +90,7 @@ menu-vmess
 else
 exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^### $user $exp/,/^},{/d" /etc/vmess/.vmess.db
 systemctl restart xray > /dev/null 2>&1
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -332,6 +333,8 @@ vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
+mkdir -p etc/vmess/ip
+echo ${limit} >> /etc/vmess/${user}ip/
 if [ ! -e /etc/vmess ]; then
   mkdir -p /etc/vmess
 fi
@@ -350,7 +353,7 @@ DATADB=$(cat /etc/vmess/.vmess.db | grep "^###" | grep -w "${user}" | awk '{prin
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vmess/.vmess.db
 fi
-echo "### ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/vmess/.vmess.db
+echo "### ${user} ${exp} ${uuid} " >>/etc/vmess/.vmess.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • CREATE VMESS USER •              ${NC} $COLOR1│$NC"
