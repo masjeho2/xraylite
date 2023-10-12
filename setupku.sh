@@ -172,7 +172,7 @@ rm -f /root/xraymode.sh
 wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 cd /usr/local/sbin/
-wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit-all-ip && chmod +x limit-all-ip && ./limit-all-ip
+wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit-all-ip 
 cat >/etc/systemd/system/vmip.service << EOF
 [Unit]
 Description=LIMIT IP VMESS
