@@ -70,6 +70,11 @@ touch /var/log/xray/error2.log
 touch /var/log/xray/{access.log,error.log}
 chmod 777 /var/log/xray/*.log
 touch /etc/bot/.bot.db
+touch /etc/vmess/ip/
+touch /etc/vless/ip/
+touch /etc/trojan/ip/
+touch /etc/shadowsocks/ip/
+touch /etc/ssh/ip/
 touch /etc/vmess/.vmess.db
 touch /etc/vless/.vless.db
 touch /etc/trojan/.trojan.db
