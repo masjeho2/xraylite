@@ -143,6 +143,7 @@ menu-trojan
 else
 exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^#! $user $exp/,/^},{/d" /etc/trojan/.trojan.db
 systemctl restart xray > /dev/null 2>&1
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -210,6 +211,8 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "/#! $user/c\#! $user $exp4" /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
+mkdir -p etc/trojan/ip
+echo ${limit} >> /etc/trojan/${user}ip/
 if [ ! -e /etc/trojan ]; then
   mkdir -p /etc/trojan
 fi
@@ -224,11 +227,11 @@ d=$((${c} * 1024 * 1024 * 1024))
 if [[ ${c} != "0" ]]; then
   echo "${d}" >/etc/trojan/${user}
 fi
-DATADB=$(cat /etc/trojan/.trojan.db | grep "^#tr#" | grep -w "${user}" | awk '{print $2}')
+DATADB=$(cat /etc/trojan/.trojan.db | grep "^#!" | grep -w "${user}" | awk '{print $2}')
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
 fi
-echo "#tr# ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/trojan/.trojan.db
+echo "#! ${user} ${exp} ${uuid} " >>/etc/trojan/.trojan.db
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • RENEW TROJAN USER •              ${NC} $COLOR1│$NC"
