@@ -64,8 +64,8 @@ done
 # Check ur Account
 for user in ${data[@]}
   do
-    if [ -e /etc/limit/vless/quota/${user} ]; then
-      checkLimit=$(cat /etc/limit/vless/quota/${user});
+    if [ -e /etc/vless/${user} ]; then
+      checkLimit=$(cat /etc/vless/${user});
       if [[ ${#checkLimit} -gt 1 ]]; then
       if [ -e /etc/limit/vless/${user} ]; then
       Usage=$(cat /etc/limit/vless/${user});
