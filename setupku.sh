@@ -169,6 +169,9 @@ cd
 rm -f /root/ins-xray.sh
 rm -f /root/insshws.sh
 rm -f /root/xraymode.sh
+wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+
+wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit-all-ip && chmod +x limit-all-ip && ./limit-all-ip
 
 #xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
