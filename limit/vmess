@@ -63,8 +63,8 @@ done
 # Check ur Account
 for user in ${data[@]}
   do
-    if [ -e /etc/limit/vmess/quota/${user} ]; then
-      checkLimit=$(cat /etc/limit/vmess/quota/${user});
+    if [ -e /etc/vmess/${user} ]; then
+      checkLimit=$(cat /etc/vmess/${user});
       if [[ ${#checkLimit} -gt 1 ]]; then
       if [ -e /etc/limit/vmess/${user} ]; then
       Usage=$(cat /etc/limit/vmess/${user});
@@ -76,11 +76,11 @@ for user in ${data[@]}
       sed -i "/^### $user $exp/d" /etc/vmess/.vmess.db
       send-log
       rm -rf /etc/limit/vmess/${user}
-      rm -f /etc/funny/limit/vmess/ip/$user
-	  rm -f /etc/vmess/$user
-	  rm -f /etc/limit/vmess/$user
-	  rm -f /etc/limit/vmess/quota/$user
-	  rm -f /var/www/html/vmess-$user.txt
+      rm -f /etc/vmess/${user}ip/
+      rm -f /etc/vmess/$user
+      rm -f /etc/limit/vmess/$user
+      rm -f /etc/limit/vmess/quota/$user
+     rm -f /var/www/html/vmess-$user.txt
       systemctl restart xray >> /dev/null 2>&1
       else
       echo ""
