@@ -202,13 +202,7 @@ do
 if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
-iplimit=$(cat /etc/vmess/${akun}ip/)
-jum2=$(cat /tmp/ipvmess.txt | wc -l)
-byte=$(cat /etc/vmess/${akun})
-lim=$(con ${byte})
-wey=$(cat /etc/limit/vmess/${akun})
-gb=$(con ${wey})
-lastlogin=$(cat /var/log/xray/access.log | grep -w "$user" | tail -n 500 | cut -d " " -f 2 | tail -1)
+
 echo -n > /tmp/ipvmess.txt
 data2=( `cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
 for ip in "${data2[@]}"
@@ -229,16 +223,8 @@ if [[ -z "$jum" ]]; then
 echo > /dev/null
 else
 jum2=$(cat /tmp/ipvmess.txt | nl)
-echo -e " \033[1;36m┌──────────────────────────────────────┐\033[0m"
-printf "  %-13s %-7s %-8s %2s\n" "  USERNAME : ${user}" 
-printf "  %-13s %-7s %-8s %2s\n" "  LOGIN    : $lastlogin" 
-printf "  %-13s %-7s %-8s %2s\n" "  Quota GB : ${gb}/${lim}"   
-printf "  %-13s %-7s %-8s %2s\n" "  Jumlah Login IP : $jum2" 
-printf "  %-13s %-7s %-8s %2s\n" "  LIMIT IP : $iplimit" 
-printf "  %-13s %-7s %-8s %2s\n" "  Login IP :$jum" 
-echo -e " \033[1;36m└──────────────────────────────────────┘\033[0m"
-#echo -e "$COLOR1│${NC} user : $akun";
-#echo -e "$COLOR1│${NC} $jum2";
+echo -e "$COLOR1│${NC} user : $akun";
+echo -e "$COLOR1│${NC} $jum2";
 fi
 rm -rf /tmp/ipvmess.txt
 done
