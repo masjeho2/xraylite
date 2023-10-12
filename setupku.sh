@@ -170,8 +170,78 @@ rm -f /root/ins-xray.sh
 rm -f /root/insshws.sh
 rm -f /root/xraymode.sh
 wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
-
+cd
+cd /usr/local/sbin/
 wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit-all-ip && chmod +x limit-all-ip && ./limit-all-ip
+cat >/etc/systemd/system/vmip.service << EOF
+[Unit]
+Description=LIMIT IP VMESS
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/limit-all-ip vmip
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart vmip
+systemctl enable vmip
+
+cat >/etc/systemd/system/vlip.service << EOF
+[Unit]
+Description=LIMIT IP VLESS
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/limit-all-ip vlip
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart vlip
+systemctl enable vlip
+
+cat >/etc/systemd/system/trip.service << EOF
+[Unit]
+Description=LIMIT IP TROJAN
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/limit-all-ip trip
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart trip
+systemctl enable trip
+
+cat >/etc/systemd/system/ssip.service << EOF
+[Unit]
+Description=LIMIT IP Shadowsocks
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/limit-all-ip ssip
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart ssip
+systemctl enable ssip
+#SERVICE VMESS
+cd
 
 #xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
