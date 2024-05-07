@@ -16,7 +16,7 @@ ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 # domain random
-CDN="https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/ssh"
+CDN="https://raw.githubusercontent.com/masjeho2/xraylite/main/ssh"
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 red='\e[1;31m'
@@ -57,7 +57,7 @@ echo "IP=" >> /var/lib/scrz-prem/ipvps.conf
 sudo at install squid -y
 sudo apt install net-tools -y
 sudo apt install vnstat -y
-wget -q https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/tools.sh && chmod +x tools.sh && ./tools.sh
+wget -q https://raw.githubusercontent.com/masjeho2/xraylite/main/tools.sh && chmod +x tools.sh && ./tools.sh
 rm tools.sh
 clear
 # izin
@@ -66,7 +66,7 @@ echo "memeriksa vps anda"
 sleep 0.5
 CEKEXPIRED () {
         today=$(date -d +1day +%Y -%m -%d)
-        Exp1=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+        Exp1=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $3}')
         if [[ $today < $Exp1 ]]; then
         echo "status script aktif.."
         else
@@ -74,7 +74,7 @@ CEKEXPIRED () {
         exit 0
 fi
 }
-IZIN=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | awk '{print $4}' | grep $MYIP)
+IZIN=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | awk '{print $4}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo "IZIN DI TERIMA!!"
 CEKEXPIRED
@@ -115,8 +115,8 @@ clear
 	echo -e "${BGreen}Done!${NC}"
     sleep 2
 clear
-CHATID="-1001966360036"
-KEY="6307367714:AAG_Gae1CEjB-BDTYLzHSb89kbmLxzln7mk"
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
 WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="Project VPN TUNNELING 
@@ -141,10 +141,10 @@ echo -e "$green      Install SSH / WS               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget -q -O ssh-vpn.sh https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/andyyuda/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q -O ssh-vpn.sh https://raw.githubusercontent.com/masjeho2/xraylite/main/andyyuda/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 sleep 2
 clear
-wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/nginx-ssl.sh && chmod +x nginx-ssl.sh && ./nginx-ssl.sh
+wget https://raw.githubusercontent.com/masjeho2/xraylite/main/nginx-ssl.sh && chmod +x nginx-ssl.sh && ./nginx-ssl.sh
 
 
 #install ssh ovpn
@@ -153,14 +153,14 @@ echo -e "$green      Install Websocket              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/Insshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/masjeho2/xraylite/main/Insshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 
 #exp
 cd /usr/bin
-wget -O xp "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/xp.sh"
+wget -O xp "https://raw.githubusercontent.com/masjeho2/xraylite/main/xp.sh"
 chmod +x xp
 sleep 1
-wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/Finaleuy/notramcpu" && chmod +x /usr/bin/notramcpu
+wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/masjeho2/xraylite/main/Finaleuy/notramcpu" && chmod +x /usr/bin/notramcpu
 
 cd
 #remove log 
@@ -169,10 +169,10 @@ cd
 rm -f /root/ins-xray.sh
 rm -f /root/insshws.sh
 rm -f /root/xraymode.sh
-wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget raw.githubusercontent.com/masjeho2/xraylite/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 cd /usr/local/sbin/
-wget raw.githubusercontent.com/AndyyudaVPN/xraylite/main/limit/limit-all-ip 
+wget raw.githubusercontent.com/masjeho2/xraylite/main/limit/limit-all-ip 
 cat >/etc/systemd/system/vmip.service << EOF
 [Unit]
 Description=LIMIT IP VMESS
@@ -248,14 +248,14 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 echo -e "$green      Install Xray              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
-wget -q -O ins-xray.sh https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q -O ins-xray.sh https://raw.githubusercontent.com/masjeho2/xraylite/main/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 sleep 1
-wget -q -O senmenu.sh https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/senmenu.sh && chmod +x senmenu.sh && ./senmenu.sh
+wget -q -O senmenu.sh https://raw.githubusercontent.com/masjeho2/xraylite/main/senmenu.sh && chmod +x senmenu.sh && ./senmenu.sh
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install slowdns              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
-wget https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/slowdns/installsl.sh && chmod +x installsl.sh && ./installsl.sh
+wget https://raw.githubusercontent.com/masjeho2/xraylite/main/slowdns/installsl.sh && chmod +x installsl.sh && ./installsl.sh
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green      Install openvpn              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"

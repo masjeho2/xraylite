@@ -23,7 +23,7 @@ RED='\033[0;31m'
 IPVPS=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/masjeho2/permission/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $IPVPS | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -51,11 +51,11 @@ NS=$(cat /etc/xray/dns)
 CITY=$(curl -s ipinfo.io/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
-Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $2}')
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $3}')
 fi
 
 # =========================================
@@ -133,8 +133,8 @@ export Server_IP="underfined"
 export Script_Mode="Stable"
 export Auther=".geovpn"
 export MYIP=$( curl -s https://ipinfo.io/ip/ )
-Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
-Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+Name=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $2}')
+Exp=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $3}')
 
 # // Root Checking
 if [ "${EUID}" -ne 0 ]; then
@@ -152,11 +152,11 @@ NS=$(cat /etc/xray/dns)
 CITY=$(curl -s ipinfo.io/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
-Name=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $2}')
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/masjeho2/permission/main/ip | grep $MYIP | awk '{print $3}')
 fi
 
 ###########- END COLOR CODE -##########
@@ -181,7 +181,7 @@ persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
 # // Exporting Network Interface
 export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
 
-data_ip="https://raw.githubusercontent.com/AndyyudaVPN/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/masjeho2/permission/main/ip"
 d2=$(date -d "$date_list" +"+%s")
 d1=$(date -d "$Exp" +"+%s")
 dayleft=$(( ($d1 - $d2) / 86400 ))
@@ -269,7 +269,7 @@ IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
 ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}' | head -1)"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}' | head -1)"
-export sem=$( curl -s https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/versions)
+export sem=$( curl -s https://raw.githubusercontent.com/masjeho2/xraylite/main/versions)
 export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 clear

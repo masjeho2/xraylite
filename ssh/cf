@@ -3,12 +3,12 @@ MYIP=$(wget -qO- icanhazip.com);
 apt install jq curl -y
 clear
 read -p "Masukan Domain contoh Dragon:" konyol
-DOMAIN=mypremium.biz.id
+DOMAIN=free-wifi.me
 sub=${konyol}
 #(</dev/urandom tr -dc a-z0-9 | head -c5)
-dns=${sub}.mypremium.biz.id
-CF_ID=andyyuda41@gmail.com
-CF_KEY=0d626234700bad388d6d07b49c42901445d1c
+dns=${sub}.free-wifi.me
+CF_ID=raden.mas.jeho55@gmail.com
+CF_KEY=qiBBQFJ5ZF5q1jFe-CnDK0PxpSDeQL81uglP7zLm
 set -euo pipefail
 IP=$(wget -qO- icanhazip.com);
 echo "Updating DNS for ${dns}..."

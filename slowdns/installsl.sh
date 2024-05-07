@@ -1,12 +1,12 @@
 #!/bin/bash
 ns_domain_cloudflare() {
-	DOMAIN=klmpk-tunneling.my.id
+	DOMAIN=free-wifi.me
 	DOMAIN_PATH=$(cat /etc/xray/domain)
 	SUB=$(tr </dev/urandom -dc a-z0-9 | head -c7)
-	SUB_DOMAIN=${SUB}.klmpk-tunneling.my.id
+	SUB_DOMAIN=${SUB}.free-wifi.me
 	NS_DOMAIN=ns.${SUB_DOMAIN}
-	CF_ID=andyyuda41@gmail.com
-    CF_KEY=0d626234700bad388d6d07b49c42901445d1c
+	CF_ID=raden.mas.jeho55@gmail.com
+    CF_KEY=qiBBQFJ5ZF5q1jFe-CnDK0PxpSDeQL81uglP7zLm
 	set -euo pipefail
 	IP=$(wget -qO- ipinfo.io/ip)
 	echo "Updating DNS NS for ${NS_DOMAIN}..."
@@ -47,15 +47,15 @@ ns_domain_cloudflare() {
 setup_dnstt() {
 	cd
 	mkdir -p /etc/slowdns
-	wget -O dnstt-server "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/slowdns/dnstt-server" >/dev/null 2>&1
+	wget -O dnstt-server "https://raw.githubusercontent.com/masjeho2/xraylite/main/slowdns/dnstt-server" >/dev/null 2>&1
 	chmod +x dnstt-server >/dev/null 2>&1
-	wget -O dnstt-client "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/slowdns/dnstt-client" >/dev/null 2>&1
+	wget -O dnstt-client "https://raw.githubusercontent.com/masjeho2/xraylite/main/slowdns/dnstt-client" >/dev/null 2>&1
 	chmod +x dnstt-client >/dev/null 2>&1
 	./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
 	chmod +x *
 	mv * /etc/slowdns
-	wget -O /etc/systemd/system/client.service "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/slowdns/client" >/dev/null 2>&1
-	wget -O /etc/systemd/system/server.service "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/slowdns/server" >/dev/null 2>&1
+	wget -O /etc/systemd/system/client.service "https://raw.githubusercontent.com/masjeho2/xraylite/main/slowdns/client" >/dev/null 2>&1
+	wget -O /etc/systemd/system/server.service "https://raw.githubusercontent.com/masjeho2/xraylite/main/slowdns/server" >/dev/null 2>&1
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/client.service 
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/server.service 
 }
