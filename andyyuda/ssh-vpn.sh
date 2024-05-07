@@ -20,7 +20,7 @@ commonname=none
 email=agunxz@themoon.my,id
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/Insshws/password.txt"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/masjeho2/xraylite/main/Insshws/password.txt"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -136,13 +136,13 @@ mkdir -p /home/vps/public_html
 # install badvpn
 cd
 cd
-wget -O /usr/bin/badvpn-udpgw https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/udpgw/badvpn-udpgw && chmod +x  /usr/bin/badvpn-udpgw
+wget -O /usr/bin/badvpn-udpgw https://raw.githubusercontent.com/masjeho2/xraylite/main/udpgw/badvpn-udpgw && chmod +x  /usr/bin/badvpn-udpgw
 #system badvpn 7300
-wget -O /etc/systemd/system/svr-7300.service https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/udpgw/svr-7300.service && chmod +x  /etc/systemd/system/svr-7300.service
+wget -O /etc/systemd/system/svr-7300.service https://raw.githubusercontent.com/masjeho2/xraylite/main/udpgw/svr-7300.service && chmod +x  /etc/systemd/system/svr-7300.service
 #system badvpn 7200
-wget -O /etc/systemd/system/svr-7200.service https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/udpgw/svr-7200.service && chmod +x  /etc/systemd/system/svr-7200.service
+wget -O /etc/systemd/system/svr-7200.service https://raw.githubusercontent.com/masjeho2/xraylite/main/udpgw/svr-7200.service && chmod +x  /etc/systemd/system/svr-7200.service
 #system badvpn 7100
-wget -O /etc/systemd/system/svr-7100.service https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/udpgw/svr-7100.service && chmod +x  /etc/systemd/system/svr-7100.service
+wget -O /etc/systemd/system/svr-7100.service https://raw.githubusercontent.com/masjeho2/xraylite/main/udpgw/svr-7100.service && chmod +x  /etc/systemd/system/svr-7100.service
 
 #reboot system 7100
 systemctl daemon-reload
@@ -257,7 +257,7 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 # banner /etc/issue.net
 sleep 1
 echo -e "[ ${green}INFO$NC ] Settings banner"
-wget -q -O /etc/issue.net "https://raw.githubusercontent.com/AndyyudaVPN/xraylite/main/issue.net"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/masjeho2/xraylite/main/issue.net"
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
