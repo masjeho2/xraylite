@@ -68,6 +68,26 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "/#& $user/c\#& $user $exp4" /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌──────────────────────────────┐
+│     • RENEW VLESS USER •               
+└──────────────────────────────┘
+┌──────────────────────────────┐
+ $user Account Renewed Successfully
+    
+    Client Name : <code>$user</code>
+    Days Added  : <code>$masaaktif Days</code>
+    Expired On  : <code>$exp4</code>
+└──────────────────────────────┘ 
+┌──────────── BY ──────────────┐
+│       •  Free-Wifi  •                  
+└──────────────────────────────┘ 
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • RENEW VLESS USER •              ${NC} $COLOR1│$NC"

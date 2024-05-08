@@ -111,17 +111,18 @@ SSH UDP            :<code>1-2288</code>
 STunnel4           :<code>442,222,2096</code>
 SlowDNS port       :<code>53,5300,8080</code>
 SSH Websocket SSL/TLS: <code>443</code>
-SSH Websocket HTTP: <code>80,8080</code>
+SSH Websocket HTTP : <code>80,8080</code>
 SSH Websocket Direct: <code>8080</code>
-OPEN VPN: <code>1194</code>
-BadVPN UDPGW: <code>7100,7200,7300</code>
-Proxy Squid: <code>[ON]</code>
-OVPN TCP: <code>http://$IP:81/tcp.ovpn</code>
-OVPN UDP: <code>http://$IP:81/udp.ovpn</code>
-OVPN SSL: <code>http://$IP:81/ssl.ovpn</code>
+OPEN VPN           : <code>1194</code>
+BadVPN UDPGW       : <code>7100,7200,7300</code>
+Proxy Squid        : <code>[ON]</code>
+OVPN TCP           : <code>http://$IP:81/tcp.ovpn</code>
+OVPN UDP           : <code>http://$IP:81/udp.ovpn</code>
+OVPN SSL           : <code>http://$IP:81/ssl.ovpn</code>
+============================
 <code>GET wss://bug.com/ HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]</code>
 <code>Payload Websocket HTTP</code>
-
+============================
 <code>GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]</code>"
 
 

