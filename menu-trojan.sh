@@ -211,27 +211,6 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "/#! $user/c\#! $user $exp4" /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
-mkdir -p etc/trojan/ip
-echo ${limit} >> /etc/trojan/${user}ip/
-if [ ! -e /etc/trojan ]; then
-  mkdir -p /etc/trojan
-fi
-
-if [ -z ${quota} ]; then
-  Quota="0"
-fi
-
-c=$(echo "${quota}" | sed 's/[^0-9]*//g')
-d=$((${c} * 1024 * 1024 * 1024))
-
-if [[ ${c} != "0" ]]; then
-  echo "${d}" >/etc/trojan/${user}
-fi
-DATADB=$(cat /etc/trojan/.trojan.db | grep "^#!" | grep -w "${user}" | awk '{print $2}')
-if [[ "${DATADB}" != '' ]]; then
-  sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
-fi
-echo "#! ${user} ${exp} ${uuid} " >>/etc/trojan/.trojan.db
 CHATID="1658354197"
 KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
 WKT="10"
@@ -317,9 +296,31 @@ sed -i '/#trojanws$/a\#! '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-systemctl restart xray
+systemctl restart xray > /dev/null 2>&1
+service cron restart > /dev/null 2>&1
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 trojanlink="trojan://${uuid}@bug.com:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+mkdir -p etc/trojan/ip
+echo ${limit} >> /etc/trojan/${user}ip/
+if [ ! -e /etc/trojan ]; then
+  mkdir -p /etc/trojan
+fi
+
+if [ -z ${quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${quota}" | sed 's/[^0-9]*//g');
+d=$((${c} * 1024 * 1024 * 1024));
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/trojan/${user}
+fi
+DATADB=$(cat /etc/trojan/.trojan.db | grep "^#!" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
+fi
+echo "#! ${user} ${exp} ${uuid} " >>/etc/trojan/.trojan.db
 CHATID="1658354197"
 KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
 WKT="10"
@@ -339,18 +340,11 @@ TEXT="
   Path        : <code>/trojan-ws</code>
   Path WSS    : <code>wss://bug.com/trojan-ws</code>
   ServiceName : <code>trojan-grpc</code>
-└──────────────────────────────┘
-┌──────────────────────────────┐
-  Link WS : 
-  <code>${trojanlink}</code>
   
-  Link GRPC : 
-  <code>${trojanlink1}</code>
 └──────────────────────────────┘
 ┌───────────── BY ─────────────┐
-│        • Free-Wifi •                 
-└──────────────────────────────┘
-"
+│        • Free-Wifi •          
+└──────────────────────────────┘"
 curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -408,5 +402,3 @@ case $opt in
 00 | 0) clear ; menu ;;
 *) clear ; menu-trojan ;;
 esac
-
-       
