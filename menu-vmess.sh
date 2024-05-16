@@ -356,12 +356,29 @@ grpc=`cat<<EOF
       "tls": "tls"
 }
 EOF`
+opok=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "80",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/api/v1/token/hetoken",
+      "type": "none",
+      "host": "myim3-he.ioh.co.id",
+      "tls": "none"
+}
+EOF`
 vmess_base641=$( base64 -w 0 <<< $vmess_json1)
 vmess_base642=$( base64 -w 0 <<< $vmess_json2)
 vmess_base643=$( base64 -w 0 <<< $vmess_json3)
+vmess_base644=$( base64 -w 0 <<< $vmess_json4)
 vmesslink1="vmess://$(echo $asu | base64 -w 0)"
 vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
+vmesslink4="vmess://$(echo $opok | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 mkdir -p etc/vmess/ip
@@ -420,6 +437,9 @@ TEXT="
   
   Link GRPC : 
   <code>${vmesslink3}</code>
+
+  Link OPOK
+  <code>${vmesslink4}</code>
 └───────────────────────────────┘ 
 ┌──────────── BY ───────────────┐
 │        • Free-Wifi •                    
@@ -457,6 +477,9 @@ echo -e "$COLOR1 ${NC} ${vmesslink2}"
 echo -e "$COLOR1 ${NC} "
 echo -e "$COLOR1 ${NC} Link GRPC : "
 echo -e "$COLOR1 ${NC} ${vmesslink3}"
+echo -e "$COLOR1 ${NC} "
+echo -e "$COLOR1 ${NC} Link OPOK : "
+echo -e "$COLOR1 ${NC} ${vmesslink4}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}                • Andyyuda •                 $COLOR1│$NC"
