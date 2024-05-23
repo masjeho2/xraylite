@@ -138,7 +138,7 @@ wget -q -O /usr/bin/cekl "https://raw.githubusercontent.com/masjeho2/xraylite/ma
 wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/masjeho2/xraylite/main/dell.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/masjeho2/xraylite/main/add-vless.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/masjeho2/xraylite/main/update.sh"
-wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/masjeho2/xraylite/main/Finaleuy/notramcpu
+wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/masjeho2/xraylite/main/Finaleuy/notramcpu"
 chmod +x /usr/bin/menu-backup
 chmod +x /usr/bin/cekl
 chmod +x /usr/bin/dell
