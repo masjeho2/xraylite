@@ -116,7 +116,7 @@ clear
     sleep 2
 clear
 CHATID="1658354197"
-KEY="6581548016:AAGmvN9Dcx24QiOnNIp9DVilqCN2fCzMTas"
+KEY="6860001875:AAEezcndU20DatRjLEhWnUYT9mP2ZVx9dkQ"
 WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="Project VPN TUNNELING 
@@ -275,11 +275,12 @@ mkdir /root/akun/ssh
 
     
 #install remove log
-echo "0 5 * * * root reboot" >> /etc/crontab
-echo "* * * * * root clog" >> /etc/crontab
-echo "59 * * * * root pkill 'menu'" >> /etc/crontab
-echo "0 1 * * * root xp" >> /etc/crontab
-echo "*/5 * * * * root notramcpu" >> /etc/crontab
+echo "0 5 * * * reboot" >> /etc/crontab
+echo "0 5 * * * rm -f /var/log/xray/error.log" >> /etc/crontab
+#echo "* * * * * root clog" >> /etc/crontab
+echo "59 * * * * pkill 'menu'" >> /etc/crontab
+echo "0 1 * * * xp" >> /etc/crontab
+echo "*/5 * * * * notramcpu" >> /etc/crontab
 echo "0 0 */7 * * wget -O /etc/xray/geosite.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geosite.dat && wget -O /etc/xray/geoip.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geoip.dat" >> /etc/crontab
 service cron restart
 clear
@@ -293,7 +294,7 @@ if [ -f ~/.bashrc ]; then
 fi
 fi
 mesg n || true
-clear
+clearclog
 menu
 END
 chmod 644 /root/.profile
