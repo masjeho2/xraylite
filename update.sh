@@ -138,7 +138,7 @@ wget -q -O /usr/bin/cekl "https://raw.githubusercontent.com/masjeho2/xraylite/ma
 wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/masjeho2/xraylite/main/dell.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/masjeho2/xraylite/main/add-vless.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/masjeho2/xraylite/main/update.sh"
-wget -q -O /usr/bin/xolpanel "https://raw.githubusercontent.com/Andyyuda/xolpanel/main/cupu.sh"
+wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/masjeho2/xraylite/main/Finaleuy/notramcpu
 chmod +x /usr/bin/menu-backup
 chmod +x /usr/bin/cekl
 chmod +x /usr/bin/dell
@@ -173,7 +173,7 @@ chmod +x /usr/bin/changer
 chmod +x /usr/bin/fix
 chmod +x /usr/bin/add-vless
 chmod +x /usr/bin/update
-chmod +x /usr/bin/xolpanel
+chmod +x /usr/bin/notramcpu
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
