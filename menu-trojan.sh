@@ -289,7 +289,7 @@ read -n 1 -s -r -p "   Press any key to back on menu"
 trojan-menu
 fi
 done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(cat /proc/sys/kernel/random/uuid | md5sum | cut -c -10)
 read -p "   Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws$/a\#! '"$user $exp"'\
@@ -299,7 +299,7 @@ sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
-trojanlink="trojan://${uuid}@bug.com:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 mkdir -p etc/trojan/ip
 echo ${limit} >> /etc/trojan/${user}ip/
 if [ ! -e /etc/trojan ]; then
