@@ -281,7 +281,7 @@ echo "0 5 * * * root rm -f /var/log/xray/error.log" >> /etc/crontab
 echo "59 * * * * root pkill 'menu'" >> /etc/crontab
 echo "0 1 * * * root xp" >> /etc/crontab
 echo "*/5 * * * * root notramcpu" >> /etc/crontab
-echo "0 0 */7 * * root wget -O /etc/xray/geosite.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geosite.dat && wget -O /etc/xray/geoip.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geoip.dat" >> /etc/crontab
+echo "0 0 */7 * * root wget -O /usr/local/share/xray/geosite.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geosite.dat && wget -O /usr/local/share/xray/geoip.dat https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geoip.dat" >> /etc/crontab
 service cron restart
 clear
 org=$(curl -s https://ipapi.co/org )
