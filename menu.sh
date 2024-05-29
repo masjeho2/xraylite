@@ -368,9 +368,9 @@ case $opt in
 21) clear ; clearlog ;;
 99) clear ; update ;;
 22) clear ; fix ;;
-23) clear ; clear ; wget --load-cookies /tmp/cookies.txt ${UDPX} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
+23) clear ; clear ; bash <(curl -fsSL https://raw.githubusercontent.com/masjeho2/ssh-udp/main/install-udp.sh) ;;
 24) clear ; passwd ;;
-25) clear ; xolpanel ;;
+25) clear ; bash <(curl -fsSL https://raw.githubusercontent.com/masjeho2/v1/sing-box/bot/add-bot.sh) ;;
 
 0) clear ; menu ;;
 x) exit ;;
