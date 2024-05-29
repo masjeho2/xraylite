@@ -11,6 +11,7 @@ chmod +x /etc/xray/limit.vmess
 chmod +x /etc/xray/limit.vless
 chmod +x /etc/xray/limit.trojan
 chmod +x /etc/xray/limit.shadowsocks
+chmod +x /usr/local/sbin/limit-all-ip
 systemctl daemon-reload
 systemctl enable --now limitvmess
 systemctl enable --now limitvless
