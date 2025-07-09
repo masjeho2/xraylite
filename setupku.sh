@@ -237,6 +237,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
+chmod +x /usr/local/sbin/limit-all-ip
 systemctl daemon-reload
 systemctl restart ssip
 systemctl enable ssip
